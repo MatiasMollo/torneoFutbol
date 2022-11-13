@@ -28,7 +28,6 @@ $jugadores = mysqli_fetch_all($consulta);
 $sql = "SELECT * FROM staff WHERE equipo=$idEquipo";
 $consulta = $conn->query($sql);
 $staff = mysqli_fetch_all($consulta);
-
 ?>
 
 <!DOCTYPE html>
@@ -43,25 +42,37 @@ $staff = mysqli_fetch_all($consulta);
 </head>
 <body class="bg-dark">
     <div class="container mx-auto w-50 mt-5">
-        <h1 class="title text-light text-center"><?= $equipo['nombre'] ?></h1>
-        <div class="insightContainer row d-flex">
-            <div class="container w-25 p-3">
-                <h4 class="badge bg-primary text-start w-100 " ><?= $equipo['pj'] ?> Partidos jugados</h4>
-                <h4 class="badge bg-primary text-start w-100 "><?= $equipo['pg'] ?> Partidos ganados</h4>
-                <h4 class="badge bg-primary text-start w-100 "><?= $equipo['pe'] ?> Partidos empatados</h4>
-                <h4 class="badge bg-primary text-start w-100 "><?= $equipo['pp'] ?> Partidos perdidos</h4>
-                <h4 class="badge bg-primary text-start w-100 "><?= $equipo['gf'] ?> Goles a favor</h4>
-                <h4 class="badge bg-primary text-start w-100 "><?= $equipo['gc'] ?> Goles en contra</h4>
+        <h1 class="title display-3 fw-bold text-light text-center mb-3 mx-auto mt-auto"><?= $equipo['nombre'] ?></h1>
+        <div class="container mb-4 p-0">
+            <h1 class="text-light">Historia</h1>
+            <p class="text-light">Lorem ipsum dolor sit amet consectetur adipisicing elit. Corrupti doloribus eum a eos enim autem asperiores totam, dicta tempora earum excepturi quaerat, esse nulla facilis officia quia ducimus sed molestiae. Similique, laborum. Quaerat rem cupiditate ducimus. Error adipisci voluptatibus corporis consectetur cumque maiores voluptas explicabo? Ex sint minima maxime. Facere numquam mollitia tenetur aut molestias id alias quos. Autem eos, quod numquam minima fugit dignissimos tempore sequi voluptatem quos tenetur alias voluptates omnis delectus. Iusto tenetur repellendus sint dicta harum itaque dolores ullam, delectus in. Ratione quaerat obcaecati excepturi. Minus vel ut nostrum delectus similique. Harum error quas non amet.</p>
+        </div>
+        <div class="insightContainer row d-flex border-top pt-2">
+            <div class="titles d-flex">
+                <h1 class="text-light">Estadísticas</h1>
+                <h1 class="text-light text-end align-items-end d-flex ml-auto mx-auto me-0">Jugadores</h1>
             </div>
-            <div class="container w-50 mr-0 mx-auto ml-auto">
-                <h4 class="text-light text-end">Jugadores</h4>
+            <div class="container w-50 p-3">
+                <h5 class="bg-primary text-start w-75 rounded text-light p-2" ><?= $equipo['pj'] ?> Partidos jugados</h5>
+                <h5 class="bg-primary text-start w-75 rounded text-light p-2"><?= $equipo['pg'] ?> Partidos ganados</h5>
+                <h5 class="bg-primary text-start w-75 rounded text-light p-2"><?= $equipo['pe'] ?> Partidos empatados</h5>
+                <h5 class="bg-primary text-start w-75 rounded text-light p-2"><?= $equipo['pp'] ?> Partidos perdidos</h5>
+                <h5 class="bg-primary text-start w-75 rounded text-light p-2"><?= $equipo['gf'] ?> Goles a favor</h5>
+                <h5 class="bg-primary text-start w-75 rounded text-light p-2"><?= $equipo['gc'] ?> Goles en contra</h5>
+            </div>
+            <div class="container w-50 mr-0 mx-auto ml-auto justify-content-end d-flex row p-2">
                 <?php foreach($jugadores as $jugador): ?>
-                    <p class="text-light text-end"><?= $jugador[1] ?> <?= $jugador[2] ?></p>
+                    <p class="text-end bg-light w-75 p-1 rounded mx-1 mt-2 mb-0 pe-3"><?= $jugador[1] . " " . $jugador[2] ?> (<?php echo ucwords($jugador[5]) ?>)</p>
                 <?php endforeach; ?>
             </div>
+            <div class="staffDiv w-75">
+                <h1 class="title text-light pb-2">Staff</h1>
+                    <?php foreach($staff as $personal): ?>
+                        <p class="bg-light w-50 p-1 rounded"><?= $personal[1] . " " . $personal[2] ?> (<?php echo ucwords($personal[7]) ?>)</p>
+                    <?php endforeach; ?>
+            </div>
         </div>
+        <a href="fechas.php" class="btn btn-primary mb-5">Volver</a>
     </div>
-
-    <p class="text-light">BOTON DE VOLVER!!</p>
 </body>
 </html>
