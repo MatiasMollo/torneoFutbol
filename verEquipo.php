@@ -28,6 +28,13 @@ $jugadores = mysqli_fetch_all($consulta);
 $sql = "SELECT * FROM staff WHERE equipo=$idEquipo";
 $consulta = $conn->query($sql);
 $staff = mysqli_fetch_all($consulta);
+
+
+//Puntos del equipo
+$puntosEquipo = 0;
+$puntosEquipo += intval($equipo['pg']) * 3;
+$puntosEquipo += intval($equipo['pe']);
+
 ?>
 
 <!DOCTYPE html>
@@ -59,6 +66,7 @@ $staff = mysqli_fetch_all($consulta);
                 <h5 class="bg-primary text-start w-75 rounded text-light p-2"><?= $equipo['pp'] ?> Partidos perdidos</h5>
                 <h5 class="bg-primary text-start w-75 rounded text-light p-2"><?= $equipo['gf'] ?> Goles a favor</h5>
                 <h5 class="bg-primary text-start w-75 rounded text-light p-2"><?= $equipo['gc'] ?> Goles en contra</h5>
+                <h5 class="bg-success text-start w-75 rounded text-light p-2"><?= $puntosEquipo ?> Puntos en el torneo</h5>
             </div>
             <div class="container w-50 mr-0 mx-auto ml-auto justify-content-end d-flex row p-2">
                 <?php foreach($jugadores as $jugador): ?>
@@ -67,12 +75,12 @@ $staff = mysqli_fetch_all($consulta);
             </div>
             <div class="staffDiv w-75">
                 <h1 class="title text-light pb-2">Staff</h1>
-                    <?php foreach($staff as $personal): ?>
-                        <p class="bg-light w-50 p-1 rounded"><?= $personal[1] . " " . $personal[2] ?> (<?php echo ucwords($personal[7]) ?>)</p>
-                    <?php endforeach; ?>
+                <?php foreach($staff as $personal): ?>
+                    <p class="bg-light w-50 p-1 rounded"><?= $personal[1] . " " . $personal[2] ?> (<?php echo ucwords($personal[7]) ?>)</p>
+                <?php endforeach; ?>
             </div>
         </div>
-        <a href="fechas.php" class="btn btn-primary mb-5">Volver</a>
+        <a href="fechas.php" class="btn btn-secondary mb-5">Volver</a>
     </div>
 </body>
 </html>

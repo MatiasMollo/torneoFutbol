@@ -22,7 +22,6 @@ if(count($partidos) > 0) count($partidos); //Cuenta cuantos partidos registrados
 else $idPartido = 1;
 
 
-
 ?>
 
 <!DOCTYPE html>
@@ -36,8 +35,6 @@ else $idPartido = 1;
     <title>Torneo</title>
 </head>
 <body class="bg-dark">
-    <a href="tools/cerrarSesion.php" class="text-white">Cerrar Sesion</a>
-
     <div class="accordion accordion-flush mx-auto w-50 rounded mt-5" id="accordionFlushExample">
         <div class="accordion-item">
           <h2 class="accordion-header" id="flush-headingOne">
@@ -47,29 +44,29 @@ else $idPartido = 1;
           </h2>
           <div id="flush-collapseOne" class="accordion-collapse collapse" aria-labelledby="flush-headingOne" data-bs-parent="#accordionFlushExample">
             <div class="accordion-body">
-               <div class="teamContainer">
+               <div class="teamContainer d-flex h3 position-relative">
                     <a href="verEquipo.php?id=<?= $equipos[0][0] ?>"><?= $equipos[0][1] ?></a>
-                    VS
+                    <h3 class="ms-4 me-4">VS</h3>
                     <a href="verEquipo.php?id=<?= $equipos[1][0] ?>"><?= $equipos[1][1] ?></a>
-                    <div>
+                    <div class="mx-auto me-1 float-end">
                         <a href="jugarFecha.php?id=1&E1=<?= $equipos[0][0] ?>&E2=<?= $equipos[1][0] ?>" 
                             class="btn btn-primary <?php echo $idPartido != 1 ? "disabled" : "" ?>">Jugar</a>
                     </div>
                 </div>
-               <div class="teamContainer">
+               <div class="teamContainer d-flex justify-content-center h3 position-relative">
                     <a href="verEquipo.php?id=<?= $equipos[2][0] ?>"><?= $equipos[2][1] ?></a>
-                    VS
+                    <h3 class="ms-4 me-4">VS</h3>
                     <a href="verEquipo.php?id=<?= $equipos[3][0] ?>"><?= $equipos[3][1] ?></a>
-                    <div>
+                    <div class="mx-auto me-1 float-end">
                         <a href="jugarFecha.php?id=2&E1=<?= $equipos[2][0] ?>&E2=<?= $equipos[3][0] ?>"
                             class="btn btn-primary <?php echo $idPartido != 2 ? "disabled" : "" ?>">Jugar</a>
                     </div>
                </div>
-               <div class="teamContainer">
+               <div class="teamContainer d-flex justify-content-center h3 position-relative">
                     <a href="verEquipo.php?id=<?= $equipos[4][0] ?>"><?= $equipos[4][1] ?></a>
-                    VS
+                    <h3 class="ms-4 me-4">VS</h3>
                     <a href="verEquipo.php?id=<?= $equipos[5][0] ?>"><?= $equipos[5][1] ?></a>
-                    <div>
+                    <div class="mx-auto me-1 float-end">
                         <a href="jugarFecha.php?id=3&E1=<?= $equipos[4][0] ?>&E2=<?= $equipos[5][0] ?>" 
                             class="btn btn-primary <?php echo $idPartido != 3 ? "disabled" : "" ?>">Jugar</a>
                     </div>
@@ -86,29 +83,29 @@ else $idPartido = 1;
           </h2>
           <div id="flush-collapseTwo" class="accordion-collapse collapse" aria-labelledby="flush-headingTwo" data-bs-parent="#accordionFlushExample">
             <div class="accordion-body">
-               <div class="teamContainer">
+               <div class="teamContainer d-flex h3 position-relative">
                     <a href="verEquipo.php?id=<?= $equipos[0][0] ?>"><?= $equipos[0][1] ?></a>
-                    VS
+                    <h3 class="ms-4 me-4">VS</h3>
                     <a href="verEquipo.php?id=<?= $equipos[5][0] ?>"><?= $equipos[5][1] ?></a>
-                    <div>
+                    <div class="mx-auto me-1 float-end">
                         <a href="jugarFecha.php?id=4&E1=<?= $equipos[0][0] ?>&E2=<?= $equipos[5][0] ?>"
                             class="btn btn-primary <?php echo $idPartido != 4 ? "disabled" : "" ?>">Jugar</a>
                     </div>
                 </div>
-               <div class="teamContainer">
+               <div class="teamContainer d-flex h3 position-relative">
                     <a href="verEquipo.php?id=<?= $equipos[1][0] ?>"><?= $equipos[1][1] ?></a>
-                    VS
+                    <h3 class="ms-4 me-4">VS</h3>
                     <a href="verEquipo.php?id=<?= $equipos[2][0] ?>"><?= $equipos[2][1] ?></a>
-                    <div>
+                    <div class="mx-auto me-1 float-end">
                         <a href="jugarFecha.php?id=5&E1=<?= $equipos[1][0] ?>&E2=<?= $equipos[2][0] ?>" 
                             class="btn btn-primary <?php echo $idPartido != 5 ? "disabled" : "" ?>">Jugar</a>
                     </div>
                </div>
-               <div class="teamContainer">
+               <div class="teamContainer d-flex h3 position-relative">
                     <a href="verEquipo.php?id=<?= $equipos[3][0] ?>"><?= $equipos[3][1] ?></a>
-                    VS
+                    <h3 class="ms-4 me-4">VS</h3>
                     <a href="verEquipo.php?id=<?= $equipos[4][0] ?>"><?= $equipos[4][1] ?></a>
-                    <div>
+                    <div class="mx-auto me-1 float-end">
                         <a href="jugarFecha.php?id=6&E1=<?= $equipos[3][0] ?>&E2=<?= $equipos[4][0] ?>" 
                             class="btn btn-primary <?php echo $idPartido != 6 ? "disabled" : "" ?>">Jugar</a>
                     </div>
@@ -124,29 +121,29 @@ else $idPartido = 1;
           </h2>
           <div id="flush-collapseThree" class="accordion-collapse collapse" aria-labelledby="flush-headingThree" data-bs-parent="#accordionFlushExample">
           <div class="accordion-body">
-               <div class="teamContainer">
+               <div class="teamContainer d-flex h3 position-relative">
                     <a href="verEquipo.php?id=<?= $equipos[0][0] ?>"><?= $equipos[0][1] ?></a>
-                    VS
+                    <h3 class="ms-4 me-4">VS</h3>
                     <a href="verEquipo.php?id=<?= $equipos[2][0] ?>"><?= $equipos[2][1] ?></a>
-                    <div>
+                    <div class="mx-auto me-1 float-end">
                         <a href="jugarFecha.php?id=7&E1=<?= $equipos[0][0] ?>&E2=<?= $equipos[2][0] ?>" 
                             class="btn btn-primary <?php echo $idPartido != 7 ? "disabled" : "" ?>">Jugar</a>
                     </div>
                 </div>
-               <div class="teamContainer">
+               <div class="teamContainer d-flex h3 position-relative">
                     <a href="verEquipo.php?id=<?= $equipos[1][0] ?>"><?= $equipos[1][1] ?></a>
-                    VS
+                    <h3 class="ms-4 me-4">VS</h3>
                     <a href="verEquipo.php?id=<?= $equipos[4][0] ?>"><?= $equipos[4][1] ?></a>
-                    <div>
+                    <div class="mx-auto me-1 float-end">
                         <a href="jugarFecha.php?id=8&E1=<?= $equipos[1][0] ?>&E2=<?= $equipos[4][0] ?>" 
                             class="btn btn-primary <?php echo $idPartido != 8 ? "disabled" : "" ?>">Jugar</a>
                     </div>
                </div>
-               <div class="teamContainer">
+               <div class="teamContainer d-flex h3 position-relative">
                     <a href="verEquipo.php?id=<?= $equipos[3][0] ?>"><?= $equipos[3][1] ?></a>
-                    VS
+                    <h3 class="ms-4 me-4">VS</h3>
                     <a href="verEquipo.php?id=<?= $equipos[5][0] ?>"><?= $equipos[5][1] ?></a>
-                    <div>
+                    <div class="mx-auto me-1 float-end">
                         <a href="jugarFecha.php?id=9&E1=<?= $equipos[3][0] ?>&E2=<?= $equipos[5][0] ?>" 
                             class="btn btn-primary <?php echo $idPartido != 9 ? "disabled" : "" ?>">Jugar</a>
                     </div>
@@ -163,29 +160,29 @@ else $idPartido = 1;
           </h2>
           <div id="flush-collapseFour" class="accordion-collapse collapse" aria-labelledby="flush-headingFour" data-bs-parent="#accordionFlushExample">
           <div class="accordion-body">
-               <div class="teamContainer">
+               <div class="teamContainer d-flex h3 position-relative">
                     <a href="verEquipo.php?id=<?= $equipos[0][0] ?>"><?= $equipos[0][1] ?></a>
-                    VS
+                    <h3 class="ms-4 me-4">VS</h3>
                     <a href="verEquipo.php?id=<?= $equipos[3][0] ?>"><?= $equipos[3][1] ?></a>
-                    <div>
+                    <div class="mx-auto me-1 float-end">
                         <a href="jugarFecha.php?id=10&E1=<?= $equipos[0][0] ?>&E2=<?= $equipos[3][0] ?>" 
                             class="btn btn-primary <?php echo $idPartido != 10 ? "disabled" : "" ?>">Jugar</a>
                     </div>
                 </div>
-               <div class="teamContainer">
+               <div class="teamContainer d-flex h3 position-relative">
                     <a href="verEquipo.php?id=<?= $equipos[1][0] ?>"><?= $equipos[1][1] ?></a>
-                    VS
+                    <h3 class="ms-4 me-4">VS</h3>
                     <a href="verEquipo.php?id=<?= $equipos[5][0] ?>"><?= $equipos[5][1] ?></a>
-                    <div>
+                    <div class="mx-auto me-1 float-end">
                         <a href="jugarFecha.php?id=11&E1=<?= $equipos[1][0] ?>&E2=<?= $equipos[5][0] ?>" 
                             class="btn btn-primary <?php echo $idPartido != 11 ? "disabled" : "" ?>">Jugar</a>
                     </div>
                </div>
-               <div class="teamContainer">
+               <div class="teamContainer d-flex h3 position-relative">
                     <a href="verEquipo.php?id=<?= $equipos[2][0] ?>"><?= $equipos[2][1] ?></a>
-                    VS
+                    <h3 class="ms-4 me-4">VS</h3>
                     <a href="verEquipo.php?id=<?= $equipos[4][0] ?>"><?= $equipos[4][1] ?></a>
-                    <div>
+                    <div class="mx-auto me-1 float-end">
                         <a href="jugarFecha.php?id=12&E1=<?= $equipos[2][0] ?>&E2=<?= $equipos[4][0] ?>" 
                             class="btn btn-primary <?php echo $idPartido != 12 ? "disabled" : "" ?>">Jugar</a>
                     </div>
@@ -202,29 +199,29 @@ else $idPartido = 1;
           </h2>
           <div id="flush-collapseFive" class="accordion-collapse collapse" aria-labelledby="flush-headingFive" data-bs-parent="#accordionFlushExample">
             <div class="accordion-body">
-                 <div class="teamContainer">
+                 <div class="teamContainer d-flex h3 position-relative">
                       <a href="verEquipo.php?id=<?= $equipos[1][0] ?>"><?= $equipos[1][1] ?></a>
-                      VS
+                      <h3 class="ms-4 me-4">VS</h3>
                       <a href="verEquipo.php?id=<?= $equipos[3][0] ?>"><?= $equipos[3][1] ?></a>
-                      <div>
+                      <div class="mx-auto me-1 float-end">
                           <a href="jugarFecha.php?id=13&E1=<?= $equipos[1][0] ?>&E2=<?= $equipos[3][0] ?>" 
                               class="btn btn-primary <?php echo $idPartido != 13 ? "disabled" : "" ?>">Jugar</a>
                       </div>
                   </div>
-                 <div class="teamContainer">
+                 <div class="teamContainer d-flex h3 position-relative">
                       <a href="verEquipo.php?id=<?= $equipos[0][0] ?>"><?= $equipos[0][1] ?></a>
-                      VS
+                      <h3 class="ms-4 me-4">VS</h3>
                       <a href="verEquipo.php?id=<?= $equipos[4][0] ?>"><?= $equipos[4][1] ?></a>
-                      <div>
+                      <div class="mx-auto me-1 float-end">
                           <a href="jugarFecha.php?id=14&E1=<?= $equipos[0][0] ?>&E2=<?= $equipos[4][0] ?>" 
                               class="btn btn-primary <?php echo $idPartido != 14 ? "disabled" : "" ?>">Jugar</a>
                       </div>
                  </div>
-                 <div class="teamContainer">
+                 <div class="teamContainer d-flex h3 position-relative">
                       <a href="verEquipo.php?id=<?= $equipos[2][0] ?>"><?= $equipos[2][1] ?></a>
-                      VS
+                      <h3 class="ms-4 me-4">VS</h3>
                       <a href="verEquipo.php?id=<?= $equipos[5][0] ?>"><?= $equipos[5][1] ?></a>
-                      <div>
+                      <div class="mx-auto me-1 float-end">
                           <a href="jugarFecha.php?id=15&E1=<?= $equipos[2][0] ?>&E2=<?= $equipos[5][0] ?>" 
                               class="btn btn-primary <?php echo $idPartido != 15 ? "disabled" : "" ?>">Jugar</a>
                       </div>
@@ -232,9 +229,25 @@ else $idPartido = 1;
               </div>
             </div>
         </div>
+        <div class="cardContainer d-flex row justify-content-center mt-2">
+          <?php foreach($equipos as $equipo): ?>
+            <?php
+              $puntosEquipo = 0;
+              $puntosEquipo += intval($equipo[3]) * 3;
+              $puntosEquipo += intval($equipo[4]);
+            ?>
+            <div class="card mx-auto mt-3" style="width: 30%;">
+              <div class="card-body">
+                <h5 class="card-title"><?= $equipo[1] ?></h5>
+                <h6 class="card-subtitle mb-2 text-success"><?= $puntosEquipo ?> Puntos en el torneo</h6>
+                <p class="card-text">Lorem ipsum dolor sit amet consectetur adipisicing elit. In est aspernatur, consequuntur optio nam reprehenderit.</p>
+                <a href="verEquipo.php?id=<?= $equipo[0] ?>" class="card-link">Ver equipo</a>
+              </div>
+            </div>
+          <?php endforeach; ?>
+        </div>
+        <a href="verEstadisticas.php">Ver estadisticas del torneo</a>
+        <a href="tools/cerrarSesion.php" class="btn btn-light mx-auto d-flex float-end me-2 mt-2">Cerrar Sesion</a>
     </div>
-
-    <a href="verEstadisticas.php">Ver estadisticas del torneo</a>
-    <p style="color:#fff">Poner tarjetas de bootstrap para los equipos</p>
 </body>
 </html>
