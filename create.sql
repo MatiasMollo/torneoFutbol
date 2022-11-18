@@ -1,4 +1,4 @@
-CREATE DATABASE torneoFutbol IF NOT EXISTS;
+CREATE DATABASE IF NOT EXISTS torneoFutbol;
 
 USE torneoFutbol;
 

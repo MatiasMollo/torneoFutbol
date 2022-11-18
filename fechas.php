@@ -18,7 +18,7 @@ $consulta = $conn->query($sql);
 $partidos = mysqli_fetch_all($consulta);
 
 
-if(count($partidos) > 0) count($partidos); //Cuenta cuantos partidos registrados hay
+if(count($partidos) > 0) $idPartido = count($partidos)+1; //Cuenta cuantos partidos registrados hay
 else $idPartido = 1;
 
 
@@ -72,7 +72,6 @@ else $idPartido = 1;
                     </div>
                </div>
             </div>
-
           </div>
         </div>
         <div class="accordion-item">

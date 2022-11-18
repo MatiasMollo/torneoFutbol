@@ -33,7 +33,7 @@ if(isset($_SESSION['user']->id) && $_SESSION['user']->id == 1) {
       </div>
       <?php if(isset($_SESSION['message'])): ?>
             <p class="text-danger"><?php echo $_SESSION['message']->message ?></p>
-            <?php endif; ?>
+      <?php endif; ?>
       <button type="submit" class="btn btn-primary">Ingresar</button>
     </form>
 

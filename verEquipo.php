@@ -15,6 +15,8 @@ if(empty($_GET['id']) || $_GET['id'] <= 0 || $_GET['id'] > 6){
 $idEquipo = $_GET['id'];
 
 //Taemos data del equipo
+//! CUIDADO CON LA INYECCION SQL
+//! RESTRINGIR CARACTERES HTML
 $sql = "SELECT * FROM equipos WHERE ID=$idEquipo LIMIT 1";
 $consulta = $conn->query($sql);
 $equipo = mysqli_fetch_assoc($consulta);
