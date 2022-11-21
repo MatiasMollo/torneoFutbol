@@ -10,7 +10,8 @@ CREATE TABLE IF NOT EXISTS equipos (
     pe INT,
     pp INT,
     gf INT,
-    gc INT
+    gc INT,
+    puntos INT DEFAULT 0
 );
 
 CREATE TABLE IF NOT EXISTS jugadores(

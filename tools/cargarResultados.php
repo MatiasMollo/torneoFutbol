@@ -18,7 +18,7 @@ $traerEquipo = $conn->prepare($sqlEquipo);
 $sqlJugadores = "UPDATE jugadores SET goles=? WHERE ID=?";
 $actualizarJugador = $conn->prepare($sqlJugadores);
 
-$sqlEquipo = "UPDATE equipos SET pj=?,pg=?,pe=?,pp=?,gf=?,gc=? WHERE ID=?";
+$sqlEquipo = "UPDATE equipos SET pj=?,pg=?,pe=?,pp=?,gf=?,gc=?,puntos=? WHERE ID=?";
 $actualizarEquipo = $conn->prepare($sqlEquipo);
 
 $ganador = null; // Variable para almacenar id del ganador
@@ -35,17 +35,24 @@ foreach($data as $i => $equipo){
     $pe = intval($equipoDB['pe']);
     $pp = intval($equipoDB['pp']);
 
+    $puntosEquipo = intval($equipoDB['puntos']);
+
     if($i == 0){
         if($equipo->goles > $data[1]->goles) $ganador = $equipo->equipo; //idEquipo
         else if($data[1]->goles > $equipo->goles) $ganador = $data[1]->equipo;
     }
-    if($ganador == null) $pe++; //Si ganador es nulo empataron
-    else if($ganador == $equipo->equipo) $pg++; //Caso contrario si el ganador es el Id del equipo en curso se le suma a pg
+    if($ganador == null){ //Si ganador es nulo empataron
+        $pe++;
+        $puntosEquipo++;
+    } 
+    else if($ganador == $equipo->equipo){ //Caso contrario si el ganador es el Id del equipo en curso se le suma a pg
+        $pg++;
+        $puntosEquipo += 3;
+    } 
     else $pp++; //Caso contrario a los anteriores, el partido se perdio y se suma 1 a PP
 
     $gf = $equipo->goles;
     $gc = $i == 0 ? $data[1]->goles : $data[0]->goles; //Sacamos los goles en contra dependiendo del bucle
-
 
     // recorremos cada goleador y lo actualizamos en la DB
     if(count($equipo->goleadores) > 0){
@@ -56,13 +63,8 @@ foreach($data as $i => $equipo){
     }
 
     //Actualizamos las estadisticas del equipo
-    $actualizarEquipo->bind_param('iiiiiii',$pj,$pg,$pe,$pp,$gf,$gc,$equipo->equipo);
+    $actualizarEquipo->bind_param('iiiiiiii',$pj,$pg,$pe,$pp,$gf,$gc,$puntosEquipo,$equipo->equipo);
     $actualizarEquipo->execute();
-
-    //* Falta:
-    // TOD Subir a la DB los datos del partido (tabla partidos, AFUERA DEL BUCLE)
-    // TOD Actualizar en la DB las estadisticas de los dos equipos (tabla equipos)
-    // TOD Actualizar las estadisticas de los jugadores en la DB (tabla jugadores)
 
 }
 

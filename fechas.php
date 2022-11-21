@@ -21,6 +21,13 @@ $partidos = mysqli_fetch_all($consulta);
 if(count($partidos) > 0) $idPartido = count($partidos)+1; //Cuenta cuantos partidos registrados hay
 else $idPartido = 1;
 
+$sql = "SELECT * FROM equipos ORDER BY puntos DESC LIMIT 3";
+$consulta = $conn->query($sql);
+$ganadores = mysqli_fetch_all($consulta);
+
+$sql = "SELECT * FROM jugadores WHERE goles>=1 ORDER BY goles DESC LIMIT 10";
+$consulta = $conn->query($sql);
+$goleadores = mysqli_fetch_all($consulta);
 
 ?>
 
@@ -230,22 +237,58 @@ else $idPartido = 1;
         </div>
         <div class="cardContainer d-flex row justify-content-center mt-2">
           <?php foreach($equipos as $equipo): ?>
-            <?php
-              $puntosEquipo = 0;
-              $puntosEquipo += intval($equipo[3]) * 3;
-              $puntosEquipo += intval($equipo[4]);
-            ?>
             <div class="card mx-auto mt-3" style="width: 30%;">
               <div class="card-body">
                 <h5 class="card-title"><?= $equipo[1] ?></h5>
-                <h6 class="card-subtitle mb-2 text-success"><?= $puntosEquipo ?> Puntos en el torneo</h6>
+                <h6 class="card-subtitle mb-2 text-success"><?= $equipo[8] ?> Puntos en el torneo</h6>
                 <p class="card-text">Lorem ipsum dolor sit amet consectetur adipisicing elit. In est aspernatur, consequuntur optio nam reprehenderit.</p>
                 <a href="verEquipo.php?id=<?= $equipo[0] ?>" class="card-link">Ver equipo</a>
               </div>
             </div>
           <?php endforeach; ?>
         </div>
-        <a href="verEstadisticas.php">Ver estadisticas del torneo</a>
+        <div class="text-light p-3 mt-2">
+          <h3>Estadisticas del torneo</h3>
+          <table class="table text-light">
+            <thead>
+              <tr>
+                <th scope="col">Puesto</th>
+                <th scope="col">Equipo</th>
+                <th scope="col">Puntos</th>
+              </tr>
+            </thead>
+            <tbody>
+              <?php foreach($ganadores as $i => $ganador): ?>
+              <tr>
+                <th scope="row"><?= $i+1 ?>°</th>
+                <td><?= $ganador[1] ?></td>
+                <td><?= $ganador[8] ?></td>
+              </tr>
+              <?php endforeach; ?>
+            </tbody>
+        </table>
+          <h3 class="mt-3">Top 10 goleadores</h3>
+          <table class="table text-light">
+            <thead>
+              <tr>
+                <th scope="col">Puesto</th>
+                <th scope="col">Nombre</th>
+                <th scope="col">Goles</th>
+                <?php //! FALTA PONER EL EQUIPO AL QUE PERTENECE ?>
+                <?php //! Columna de putos en la tabla equipo ?>
+              </tr>
+            </thead>
+            <tbody>
+              <?php foreach($goleadores as $i => $jugador): ?>
+              <tr>
+                <th scope="row"><?= $i+1 ?>°</th>
+                <td><?= $jugador[1] . " " . $jugador[2] ?></td>
+                <td><?= $jugador[9] ?></td>
+              </tr>
+              <?php endforeach; ?>
+            </tbody>
+        </table>
+        </div>
         <a href="tools/cerrarSesion.php" class="btn btn-light mx-auto d-flex float-end me-2 mt-2">Cerrar Sesion</a>
     </div>
 </body>
