@@ -248,10 +248,10 @@ $goleadores = mysqli_fetch_all($consulta);
           <?php endforeach; ?>
         </div>
         <div class="text-light p-3 mt-2">
-          <h3>Estadisticas del torneo</h3>
-          <table class="table text-light">
+          <h3>Top 3 equipos</h3>
+          <table class="table table-dark table-striped">
             <thead>
-              <tr>
+              <tr class="table-primary">
                 <th scope="col">Puesto</th>
                 <th scope="col">Equipo</th>
                 <th scope="col">Puntos</th>
@@ -261,29 +261,40 @@ $goleadores = mysqli_fetch_all($consulta);
               <?php foreach($ganadores as $i => $ganador): ?>
               <tr>
                 <th scope="row"><?= $i+1 ?>°</th>
-                <td><?= $ganador[1] ?></td>
-                <td><?= $ganador[8] ?></td>
+                <td scope="row"><?= $ganador[1] ?></td>
+                <td scope="row"><?= $ganador[8] ?></td>
               </tr>
               <?php endforeach; ?>
             </tbody>
         </table>
-          <h3 class="mt-3">Top 10 goleadores</h3>
-          <table class="table text-light">
+          <h3 class="mt-3 mb-3">Top 10 goleadores</h3>
+          <table class="table table-striped table-dark">
             <thead>
-              <tr>
+              <tr class="table-primary">
                 <th scope="col">Puesto</th>
                 <th scope="col">Nombre</th>
                 <th scope="col">Goles</th>
+                <th scope="col">Puesto</th>
+                <th scope="col">Equipo</th>
                 <?php //! FALTA PONER EL EQUIPO AL QUE PERTENECE ?>
                 <?php //! Columna de putos en la tabla equipo ?>
+                <?php //! Si no hay ganador y empatan se tiene que definir otro partido!! ?>
               </tr>
             </thead>
             <tbody>
               <?php foreach($goleadores as $i => $jugador): ?>
               <tr>
                 <th scope="row"><?= $i+1 ?>°</th>
-                <td><?= $jugador[1] . " " . $jugador[2] ?></td>
-                <td><?= $jugador[9] ?></td>
+                <td scope="row"><?= $jugador[1] . " " . $jugador[2] ?></td>
+                <td scope="row"><?= $jugador[9] ?></td>
+                <td scope="row"><?= ucwords($jugador[5]) ?></td>
+                <?php foreach($equipos as $x => $equipo):
+                  if($equipo[0] == $jugador[8]): ?>
+                  <td scope="row"><?= $equipo[1] ?></td>
+                <?php
+                  endif;
+                  endforeach; 
+                ?>
               </tr>
               <?php endforeach; ?>
             </tbody>
