@@ -25,6 +25,11 @@ $sql = "SELECT * FROM equipos ORDER BY puntos DESC LIMIT 3";
 $consulta = $conn->query($sql);
 $ganadores = mysqli_fetch_all($consulta);
 
+$empate = 0;
+if($idPartido > 15){
+  if($ganadores[0][8] == $ganadores[1][8]) $empate = 1; //* Verificando empate (falta mostrarlo)
+}
+
 $sql = "SELECT * FROM jugadores WHERE goles>=1 ORDER BY goles DESC LIMIT 10";
 $consulta = $conn->query($sql);
 $goleadores = mysqli_fetch_all($consulta);
@@ -267,6 +272,20 @@ $goleadores = mysqli_fetch_all($consulta);
               <?php endforeach; ?>
             </tbody>
         </table>
+        <?php if($empate || true): ?>
+          <div class="container card text-dark p-2">
+            <h3 class="ms-4 mt-2 text-danger text-decoration-underline">Empate</h3>
+            <div class="d-flex position-relative h4 ms-4">
+              <a href="verEquipo.php?id=<?= $ganadores[0][0] ?>" class="me-3"><?= $ganadores[0][1] ?></a>
+              VS
+              <a href="verEquipo.php?id=<?= $ganadores[1][0] ?>" class="ms-3"><?= $ganadores[1][1] ?></a>
+              <div class="d-flex mx-auto float-end me-3">
+                <a href="jugarFecha.php?id=16&E1=<?= $ganadores[0][0] ?>&E2=<?= $ganadores[1][0] ?>"
+                class="btn btn-primary">Desempatar</a>
+              </div>
+            </div>
+          </div>
+        <?php endif ?>
           <h3 class="mt-3 mb-3">Top 10 goleadores</h3>
           <table class="table table-striped table-dark">
             <thead>
@@ -276,8 +295,6 @@ $goleadores = mysqli_fetch_all($consulta);
                 <th scope="col">Goles</th>
                 <th scope="col">Puesto</th>
                 <th scope="col">Equipo</th>
-                <?php //! FALTA PONER EL EQUIPO AL QUE PERTENECE ?>
-                <?php //! Columna de putos en la tabla equipo ?>
                 <?php //! Si no hay ganador y empatan se tiene que definir otro partido!! ?>
               </tr>
             </thead>
@@ -300,7 +317,7 @@ $goleadores = mysqli_fetch_all($consulta);
             </tbody>
         </table>
         </div>
-        <a href="tools/cerrarSesion.php" class="btn btn-light mx-auto d-flex float-end me-2 mt-2">Cerrar Sesion</a>
+        <a href="tools/cerrarSesion.php" class="btn btn-light mx-auto d-flex float-end me-2 mt-2 mb-5">Cerrar Sesion</a>
     </div>
 </body>
 </html>

@@ -36,6 +36,8 @@ $partido = mysqli_fetch_all($consulta);
 if(count($partido) == 0) $partido = 1;
 else $partido = count($partido)+1;
 
+//! Probar si funciona para el desempate
+
 //Verificamos que la ID de la URL coincida con los partidos en la DB
 if($idPartido != $partido){
     header('location:./');
