@@ -65,11 +65,11 @@ $jugadores = mysqli_fetch_all($consulta->get_result());
     <script defer src="scripts/jugarFecha.js"></script>
     <title><?php echo $equipos[0][1] . " VS " . $equipos[1][1] ?></title>
 </head>
-<body class="bg-dark">
-    <form class="mx-auto w-50 bg-light p-3 rounded mt-3">
-        <div class="teamsContainer d-flex">
+<body class="bg-dark container row d-flex p-0 mx-auto w-100">
+    <form class="mx-auto bg-light p-1 rounded mt-3 col-11 col-sm-9 col-lg-6 col-xxl-10 mb-4">
+        <div class="teamsContainer d-flex row container mx-auto p-0">
             <?php foreach($equipos as $i => $equipo): ?>
-            <div class="divEquipo divEquipo-<?= $i ?>">
+            <div class="divEquipo divEquipo-<?= $i ?> col-12 col-xxl-6 mt-3">
                 <input type="hidden" value="<?= $i . "=" . $equipo[0] ?>" class="equipo">
                 <h1 class="m-2"><?= $equipo[1] ?></h1>
                 <label for="goles-<?= $i?>" class="m-2">Goles</label>
@@ -80,15 +80,13 @@ $jugadores = mysqli_fetch_all($consulta->get_result());
                     <div class="golesJugador row m-1">
                         <h6 class="col-4 w-75" key="<?= $i . "=" . $jugador[0] ?>"><?= $jugador[1] . " " . $jugador[2] . " (" . ucwords($jugador[5]) . ")"?></h6>
                         <input type="number" key="<?= $i . "=" . $jugador[0] ?>" min="0" value="0" class="col-2 jugador jugador-<?= $i ?>" >
-                        <?php //!Hacerlo con keys y tomarlo con JS 
-                        ?>
                     </div>
                     <?php endif; ?>
                 <?php endforeach; ?>
             </div>
             <?php endforeach; ?>
         </div>
-        <button class="btn btn-primary mx-auto d-flex mt-3 subir">Subir</button>
+        <button class="btn btn-primary mx-auto d-flex mt-3 subir mb-2">Subir</button>
     </form>
 </body>
 </html>

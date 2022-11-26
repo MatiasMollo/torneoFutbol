@@ -17,11 +17,11 @@ if(isset($_SESSION['user']->id) && $_SESSION['user']->id == 1) {
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
     <script defer src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-OERcA2EqjJCMA+/3y+gxIOqMEjwtxJY7qPCqsdltbNJuaOe923+mo//f6V8Qbsw3" crossorigin="anonymous"></script>
 
-    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="css/styles.css">
     <title>Inicio - Torneo</title>
 </head>
-<body class="bg-dark justify-content-center align-items-center d-flex">
-    <form action="tools/validar.php" method="POST" class="container-md bg-light formulario">
+<body class="bg-dark justify-content-center d-flex container row">
+    <form action="tools/validar.php" method="POST" class="bg-light col-8 col-sm-6 col-lg-4 col-xxl-3 formulario mx-auto">
         <h1>Iniciar Sesión</h1>
       <div class="mb-3">
         <label for="exampleInputEmail1" class="form-label">Usuario</label>

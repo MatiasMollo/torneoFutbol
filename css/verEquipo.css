@@ -1,0 +1,35 @@
+*{
+    margin:0;
+    padding:0;
+    box-sizing: border-box;
+}
+
+@media screen and (min-width:1200px){
+    .container-estadisticas{
+        margin:0;
+    }
+    .text-estadisticas{
+        text-align: start;
+        margin:0;
+    }
+    .container-jugadores{
+        text-align:end;
+        margin: auto;
+        margin-right:0 !important;
+    }
+    .text-jugadores{
+        text-align: end;
+        margin:auto;
+        margin-bottom: 0.5rem;
+        left:auto;
+        right:0;
+    }
+
+    .staffDiv{
+        margin:0 !important;
+    }
+    .btn-volver{
+        width: 20%;
+        margin-top:0.5em;
+    }
+}

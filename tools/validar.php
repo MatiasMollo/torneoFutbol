@@ -25,4 +25,5 @@ if($_POST['user'] == "Arbitro" ||
   }
 
 
+  //! VALIDAR CARACTERES HTML
 ?>
