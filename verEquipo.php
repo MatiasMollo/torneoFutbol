@@ -12,24 +12,30 @@ if(empty($_GET['id']) || $_GET['id'] <= 0 || $_GET['id'] > 6){
     die();
 }
 
-$idEquipo = $_GET['id'];
+//Restringimos caracteres HTML (Aunque no es necesario en este caso)
+$idEquipo = htmlspecialchars($_GET['id']);
+
 
 //Taemos data del equipo
-//! CUIDADO CON LA INYECCION SQL
-//! RESTRINGIR CARACTERES HTML
-$sql = "SELECT * FROM equipos WHERE ID=$idEquipo LIMIT 1";
-$consulta = $conn->query($sql);
-$equipo = mysqli_fetch_assoc($consulta);
+$sql = "SELECT * FROM equipos WHERE ID=? LIMIT 1";
+$consulta = $conn->prepare($sql);
+$consulta->bind_param('i',$idEquipo);
+$consulta->execute();
+$equipo = mysqli_fetch_assoc($consulta->get_result());
 
 //Traemos los jugadores
-$sql = "SELECT * FROM jugadores WHERE equipo=$idEquipo";
-$consulta = $conn->query($sql);
-$jugadores = mysqli_fetch_all($consulta);
+$sql = "SELECT * FROM jugadores WHERE equipo=?";
+$consulta = $conn->prepare($sql);
+$consulta->bind_param("i",$idEquipo);
+$consulta->execute();
+$jugadores = mysqli_fetch_all($consulta->get_result());
 
 //Traemos al staff
-$sql = "SELECT * FROM staff WHERE equipo=$idEquipo";
-$consulta = $conn->query($sql);
-$staff = mysqli_fetch_all($consulta);
+$sql = "SELECT * FROM staff WHERE equipo=?";
+$consulta = $conn->prepare($sql);
+$consulta->bind_param("i",$idEquipo);
+$consulta->execute();
+$staff = mysqli_fetch_all($consulta->get_result());
 
 
 //Puntos del equipo

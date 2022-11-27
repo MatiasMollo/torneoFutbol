@@ -27,14 +27,13 @@ $ganadores = mysqli_fetch_all($consulta);
 
 $empate = 0;
 if($idPartido > 15){
-  if($ganadores[0][8] == $ganadores[1][8]) $empate = 1; //* Verificando empate (falta mostrarlo)
+  if($ganadores[0][8] == $ganadores[1][8]) $empate = 1; // Verificando que haya empate teniendo en cuenta los puntos
 }
 
 $sql = "SELECT * FROM jugadores WHERE goles>=1 ORDER BY goles DESC LIMIT 10";
 $consulta = $conn->query($sql);
 $goleadores = mysqli_fetch_all($consulta);
 
-//! Falta usar el sistema de filas y columnas en el acordion y en los datos de equipos (tarjetas)
 
 ?>
 
@@ -275,7 +274,7 @@ $goleadores = mysqli_fetch_all($consulta);
               <?php endforeach; ?>
             </tbody>
         </table>
-        <?php if($empate || true): ?>
+        <?php if($empate): ?>
           <div class="container card text-dark p-0 row d-flex text-center mx-auto div-empate col-sm-6">
             <h3 class="mt-2 text-danger col-12">Empate</h3>
             <div class="d-flex position-relative row mx-auto">
@@ -299,7 +298,6 @@ $goleadores = mysqli_fetch_all($consulta);
                   <th scope="col">Goles</th>
                   <th scope="col">Puesto</th>
                   <th scope="col">Equipo</th>
-                  <?php //! Si no hay ganador y empatan se tiene que definir otro partido!! ?>
                 </tr>
               </thead>
               <tbody>

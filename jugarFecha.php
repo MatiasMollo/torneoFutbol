@@ -11,12 +11,12 @@ if(empty($_SESSION['user']->id) || $_SESSION['user']->id != 1 ||
     die();
 }
 
-$idPartido = $_GET['id'];
-$E1 = $_GET['E1'];
-$E2 = $_GET['E2'];
+$idPartido = htmlspecialchars($_GET['id']);
+$E1 = htmlspecialchars($_GET['E1']);
+$E2 = htmlspecialchars($_GET['E2']);
 
 //Validaciones de IDs
-if(!($idPartido > 0 && $idPartido < 16) ||
+if(!($idPartido > 0 && $idPartido <= 16) ||
    !($E1 > 0  && $E1 < 7) ||
    !($E2 > 0 && $E2 < 7)){
     header('location:./');
@@ -36,7 +36,6 @@ $partido = mysqli_fetch_all($consulta);
 if(count($partido) == 0) $partido = 1;
 else $partido = count($partido)+1;
 
-//! Probar si funciona para el desempate
 
 //Verificamos que la ID de la URL coincida con los partidos en la DB
 if($idPartido != $partido){
@@ -49,9 +48,6 @@ $consulta = $conn->prepare($sql);
 $consulta->bind_param('ii',$E1,$E2);
 $consulta->execute();
 $jugadores = mysqli_fetch_all($consulta->get_result());
-
-
-//! RESTRINGIR CARACTERES HTML
 
 ?>
 <!DOCTYPE html>

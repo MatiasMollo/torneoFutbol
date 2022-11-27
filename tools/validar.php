@@ -24,6 +24,4 @@ if($_POST['user'] == "Arbitro" ||
     header('location:../');
   }
 
-
-  //! VALIDAR CARACTERES HTML
 ?>
