@@ -1,5 +1,7 @@
 let subir = document.querySelector('.subir');
 let jugadoresA,jugadoresB, equipos, goles, data = [];
+let estado = true;
+let golesA = 0, golesB = 0, golesTemporalesA = 0, golesTemporalesB = 0;
 
 subir.addEventListener('click', e => {
     e.preventDefault();
@@ -7,8 +9,6 @@ subir.addEventListener('click', e => {
     jugadoresA = document.querySelectorAll('.jugador-0');
     jugadoresB = document.querySelectorAll('.jugador-1');
     equipos = document.querySelectorAll('.equipo');
-    //golesA = document.querySelector('.goles-0');
-    //golesB = document.querySelector('.goles-1')
 
     equipos.forEach((equipo,i) => {
         //Obtenemos el Id del equipo
@@ -16,6 +16,8 @@ subir.addEventListener('click', e => {
 
         //Obtenemos los goles del equipo
         goles = document.querySelector(`.goles-${i}`).value;
+        if(i == 0) golesA = goles;
+        else golesB = goles;
 
         //Obtenemos todos los jugadores del equipo
         jugadores = document.querySelectorAll(`.jugador-${i}`);
@@ -29,7 +31,11 @@ subir.addEventListener('click', e => {
                     idJugador : jugador.getAttribute('key').split("=")[1],
                     goles : jugador.value
                 })
-            } 
+
+                if(i == 0) golesTemporalesA += parseInt(jugador.value);
+                else golesTemporalesB += parseInt(jugador.value);
+
+            }
         })
 
         let obj = {
@@ -41,25 +47,42 @@ subir.addEventListener('click', e => {
         //Metemos el objeto del equipo en el array Data
         data.push(obj);
     })
-    
-    console.log(JSON.stringify(data))
-    try{
-        let body = new FormData;
-        body.append("json",JSON.stringify(data));
 
-        fetch("tools/cargarResultados.php",{
-            headers : new Headers(),
-            method : "POST",
-            body
-        })
-        .then(res => res.text())
-        .then(res => {
-            console.log(res);
-            window.location.href="./"; //TODO Probar que funcione
-        })
-        .catch(e => console.log("Error: " + e))
+    if(golesA != golesTemporalesA || golesB != golesTemporalesB) estado = false;
+    else estado = true;
+
+    console.log("Goles A: " + golesA + " golesB: " + golesB + "GolesTmpA: " + golesTemporalesA + "GolesTmpB: " + golesTemporalesB)
+
+    console.log("Estado = " + estado)
+    //console.log(JSON.stringify(data))
+    if(estado){
+
+      try{
+          let body = new FormData;
+          body.append("json",JSON.stringify(data));
+
+          fetch("tools/cargarResultados.php",{
+              headers : new Headers(),
+              method : "POST",
+              body
+          })
+          .then(res => res.text())
+          .then(res => {
+              console.log(res);
+              window.location.href="./"; //TODO Probar que funcione
+          })
+          .catch(e => console.log("Error: " + e))
+      }
+      catch(e){
+          console.log("Error: " + e)
+      }
+
     }
-    catch(e){
-        console.log("Error: " + e)
+    else{
+      estado = true;
+        golesA = 0;
+        golesB = 0;
+        golesTemporalesA = 0;
+        golesTemporalesB = 0;
     }
 })

@@ -1,12 +1,12 @@
 <?php
 session_start();
-include "tools/dbConnect.php";
+include("dbConnect.php");
 
 if(empty($_SESSION['user']->id)){
     header('location:./');
     die();
 }
-
+/*
 $equipos = [
     "Almirante Brown",
     "Lanus",
@@ -49,19 +49,19 @@ $apellidoPersonas = [
     "Vargas"
 ];
 
-/*
+
 // Equipos
 $sql = "INSERT INTO equipos (nombre,pj,pg,pe,pp,gf,gc) VALUES (?,?,?,?,?,?,?)";
 $consulta = $conn->prepare($sql);
 $v = 0; // $v = $valor
 
 foreach($equipos as $equipo){
-    
+
     $consulta->bind_param("siiiiii",$equipo,$v,$v,$v,$v,$v,$v);
     $consulta->execute();
-}*/
+}
 
-/*
+
 // Jugadores
 
 $sql = "INSERT INTO jugadores (nombre,apellido,fechaNacimiento,altura,puesto,peso,DNI,equipo) VALUES (?,?,?,?,?,?,?,?)";
@@ -81,7 +81,7 @@ for($x=1;$x<61;$x++){
     $fechaNacimiento = date("$año-$mes-$dia");
 
     $altura = rand(160,199) / 100;
-    
+
     //Posicion en rombo - duplicado por los suplentes
     if($x%10<2) $puesto = 1; //Arqueros
     else if($x%10<4) $puesto = 2; //Defensores
@@ -96,9 +96,9 @@ for($x=1;$x<61;$x++){
 
     if($x%10==0 && $x>1) $equipo++;
 }
-*/
 
-/*
+
+
 //Staff
 
 $sql = "INSERT INTO staff (nombre,apellido,fechaNacimiento,altura,puesto,peso,DNI,equipo) VALUES (?,?,?,?,?,?,?,?)";
@@ -118,7 +118,7 @@ for($x=1;$x<19;$x++){
     $fechaNacimiento = date("$año-$mes-$dia");
 
     $altura = rand(160,199) / 100;
-    
+
 
     if($x%3==0) $puesto = 3; //Medico
     else if($x%3==2) $puesto = 2; //Preparador fisico
@@ -133,4 +133,4 @@ for($x=1;$x<19;$x++){
 
     if($x%3==0 && $x>1) $equipo++;
 }
-*/
+/*

@@ -1,10 +1,10 @@
-<?php 
+<?php
 
 session_start();
 include "tools/dbConnect.php";
 
 //Validaciones
-if(empty($_SESSION['user']->id) || $_SESSION['user']->id != 1 || 
+if(empty($_SESSION['user']->id) || $_SESSION['user']->id != 1 ||
    empty($_GET['id']) || empty($_GET['E1']) || empty($_GET['E2'])){
 
     header('location:./');
@@ -57,7 +57,7 @@ $jugadores = mysqli_fetch_all($consulta->get_result());
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
-    <script defer src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-OERcA2EqjJCMA+/3y+gxIOqMEjwtxJY7qPCqsdltbNJuaOe923+mo//f6V8Qbsw3" crossorigin="anonymous"></script> 
+    <script defer src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-OERcA2EqjJCMA+/3y+gxIOqMEjwtxJY7qPCqsdltbNJuaOe923+mo//f6V8Qbsw3" crossorigin="anonymous"></script>
     <script defer src="scripts/jugarFecha.js"></script>
     <title><?php echo $equipos[0][1] . " VS " . $equipos[1][1] ?></title>
 </head>
